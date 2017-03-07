@@ -20,15 +20,15 @@ import os
 
 
 #/---------------------------------------------------------------
-# Select the file for output 📌 see convert to dynamic file location 
+# Select the file for output 📌 see convert to dynamic file location
 
-# root = Tkinter.Tk()
-# root.withdraw()
-# ''
-# filename = tkFileDialog.askopenfile(parent=root,mode='w',title='Pick a file')
-#
-# if filename != None:
-#     f = open(str(filename), 'w')
+root = Tkinter.Tk()
+root.withdraw()
+''
+filename = tkFileDialog.askopenfilename(parent=root,title='Pick a file')
+
+if filename != None:
+    f = open(str(filename), 'w')
 
  # Select the file hardcode
 f = open('theresult2.csv', 'w')
