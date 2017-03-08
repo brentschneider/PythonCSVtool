@@ -60,19 +60,19 @@ with open('2ndrun.csv', 'r') as csvfile1:
                 file = file + (only_b[lucky-1][0] + ",\n")
 
 
-            if win:
-                f = asksaveasfile(mode='w', defaultextension=".csv")
+        if win:
+            f = asksaveasfile(mode='w', defaultextension=".csv")
 
-            else:
-                f = tkFileDialog.asksaveasfile(mode='w', defaultextension=".csv")
+        else:
+            f = tkFileDialog.asksaveasfile(mode='w', defaultextension=".csv")
 
 
-            if f is None: # asksaveasfile return `None` if dialog closed with "cancel".
-                print("Save action cancelled. Nothing was saved.")
-            else:
-                f.write(file)
-                f.close() # `()` was missing.
-                print("File has been saved.")
+        if f is None: # asksaveasfile return `None` if dialog closed with "cancel".
+            print("Save action cancelled. Nothing was saved.")
+        else:
+            f.write(file)
+            f.close() # `()` was missing.
+            print("File has been saved.")
 
         #         f.write(only_b[lucky-1][0] + "," + "\n") # This section needs cleaning up a bit see notes
         #
