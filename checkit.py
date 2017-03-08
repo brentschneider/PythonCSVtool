@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
 import csv
 import sys
-from tkinter import *
-from tkinter.filedialog import *
+from sys import platform as _platform
+win = bool(False)
+if _platform == "win32" or _platform == "windows":
+   from tkinter import *
+   from tkinter.filedialog import *
+   win = bool(True)
+else:
+    import Tkinter, tkFileDialog
+
 
 #/---------------------------------------------------------------
 #
@@ -43,6 +50,7 @@ with open('2ndrun.csv', 'r') as csvfile1:
 
         # set counter
         lucky = 0
+        file = ""
 
         for row in rows2:
             if row[0] not in rows1_col_a:
@@ -51,7 +59,14 @@ with open('2ndrun.csv', 'r') as csvfile1:
                 print (only_b[lucky-1][0] + ",") # Because Feedback feels good
                 file = only_b[lucky-1][0] + ","
 
-            f = asksaveasfile(mode='w', defaultextension=".csv")
+
+            if win:
+                f = asksaveasfile(mode='w', defaultextension=".csv")
+
+            else:
+                f = tkFileDialog.asksaveasfile(mode='w', defaultextension=".csv")
+
+
             if f is None: # asksaveasfile return `None` if dialog closed with "cancel".
                 print("Save action cancelled. Nothing was saved.")
             else:
