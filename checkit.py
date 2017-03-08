@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import csv
 import sys
-import Tkinter, tkFileDialog
+from tkinter import *
+from tkinter.filedialog import *
 
 #/---------------------------------------------------------------
 #
@@ -20,23 +21,21 @@ import Tkinter, tkFileDialog
 #/---------------------------------------------------------------
 # Select the file for output
 
-
-root = Tkinter.Tk()
-root.withdraw()
-
-print('Select file for RESULTS ')
-
-filename = tkFileDialog.askopenfilename(parent=root,title='Pick a file')
-if filename != None:
-
-    # Opens File for result output
-    f = open(str(filename), 'w')
+# root = Tk()
+# root.withdraw()
+#
+# print('Select file for RESULTS ')
+#
+# filename = askopenfilename(parent=root,title='Pick a file')
+# if filename != None:
+#     # Opens File for result output
+#     f = open(str(filename), 'w')
 
 
-# Opens File serving as your "Dictonary" file to compare against
-with open('2ndrun.csv', 'ra') as csvfile1:
+    # Opens File serving as your "Dictonary" file to compare against
+with open('2ndrun.csv', 'r') as csvfile1:
 # Opens file containing ALL data
-    with open ("origional.csv", "ra") as csvfile2:
+    with open ("origional.csv", "r") as csvfile2:
         reader1 = [row for row in csv.reader(csvfile1.read().splitlines())]
         reader2 = [row for row in csv.reader(csvfile2.read().splitlines())]
         rows1_col_a = [row[0] for row in reader1]
@@ -51,6 +50,16 @@ with open('2ndrun.csv', 'ra') as csvfile1:
                 lucky = lucky + 1
                 only_b.append(row)
                 print (only_b[lucky-1][0] + ",") # Because Feedback feels good
+                file = only_b[lucky-1][0] + ","
 
-                f.write(only_b[lucky-1][0] + "," + "\n") # This section needs cleaning up a bit see notes
-        f.close() # you can omit in most cases as the destructor will call it
+                f = asksaveasfile(mode='w', defaultextension=".csv")
+                if f is None: # asksaveasfile return `None` if dialog closed with "cancel".
+                    print("Save action cancelled. Nothing was saved.")
+                else:
+                    f.write(file)
+                    f.close() # `()` was missing.
+                    print("File has been saved.")
+
+        #         f.write(only_b[lucky-1][0] + "," + "\n") # This section needs cleaning up a bit see notes
+        #
+        # f.close() # you can omit in most cases as the destructor will call it
