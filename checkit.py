@@ -31,7 +31,6 @@ from tkinter.filedialog import *
 #     # Opens File for result output
 #     f = open(str(filename), 'w')
 
-
     # Opens File serving as your "Dictonary" file to compare against
 with open('2ndrun.csv', 'r') as csvfile1:
 # Opens file containing ALL data
@@ -52,13 +51,13 @@ with open('2ndrun.csv', 'r') as csvfile1:
                 print (only_b[lucky-1][0] + ",") # Because Feedback feels good
                 file = only_b[lucky-1][0] + ","
 
-                f = asksaveasfile(mode='w', defaultextension=".csv")
-                if f is None: # asksaveasfile return `None` if dialog closed with "cancel".
-                    print("Save action cancelled. Nothing was saved.")
-                else:
-                    f.write(file)
-                    f.close() # `()` was missing.
-                    print("File has been saved.")
+            f = asksaveasfile(mode='w', defaultextension=".csv")
+            if f is None: # asksaveasfile return `None` if dialog closed with "cancel".
+                print("Save action cancelled. Nothing was saved.")
+            else:
+                f.write(file)
+                f.close() # `()` was missing.
+                print("File has been saved.")
 
         #         f.write(only_b[lucky-1][0] + "," + "\n") # This section needs cleaning up a bit see notes
         #
