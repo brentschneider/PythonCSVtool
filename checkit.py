@@ -57,7 +57,7 @@ with open('2ndrun.csv', 'r') as csvfile1:
                 lucky = lucky + 1
                 only_b.append(row)
                 print (only_b[lucky-1][0] + ",") # Because Feedback feels good
-                file = only_b[lucky-1][0] + ","
+                file = file + (only_b[lucky-1][0] + ",\n")
 
 
             if win:
